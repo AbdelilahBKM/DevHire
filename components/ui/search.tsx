@@ -1,14 +1,12 @@
-"use client"
 import { ContractComboBox } from "./comboBox/contractCB";
 import { LocationsComboBox } from "./comboBox/locationsCB";
 import { ToolsComboBox } from "./comboBox/toolsCB";
-import { useState } from "react";
+
 
 export default function SearchBox(){
-    const [state, setState] = useState(false);
     
     return(
-        <main className="w-full absolute bottom-[-100px] flex justify-center items-center font-extralight mb-6">
+        <main className="w-full z-10 absolute bottom-4 lg:bottom-[-100px] flex justify-center items-center font-extralight">
             <div className="border w-11/12 lg:w-[1340px] h-fit lg:h-[150px] flex flex-col lg:flex-row bg-white rounded-lg shadow">  
                 <div className="w-full lg:w-[547px] lg:border border-blue-600 rounded-lg flex justify-between items-center">
                     <div className="flex gap-1 items-center w-full lg:mx-3 h-[60px] rounded-lg bg-slate-100 pr-2">
@@ -25,13 +23,6 @@ export default function SearchBox(){
                         </button>
                     </div>
                 </div>
-                <button className="lg:hidden text-gray-500" 
-                onClick={() => setState((prev) => !prev)}>{state ? 'less options' : 'more options'}</button>
-                {state && <div className="lg:hidden">
-                    <LocationsComboBox />
-                    <ContractComboBox />
-                    <ToolsComboBox />
-                </div>}
                 <div className="hidden lg:flex items-center px-10 justify-start gap-10 w-full lg:w-[793px]">
                     <LocationsComboBox />
                     <ContractComboBox />

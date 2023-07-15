@@ -3,7 +3,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 export default function Loading(){
     const array = Array.from({length: 4}, (_:any, i:number) => i + 1);
     return (
-      <main className="text-gray-700 flex justify-center items-center">
+      <main className="text-gray-700 flex justify-center items-center lg:mt-[150px]">
         {/* <Skeleton className="w-[100px] h-[20px] rounded-full" /> */}
         <div className="lg:w-[1340px] w-4/5">
         {array.map((id: number) => (

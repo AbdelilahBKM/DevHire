@@ -18,7 +18,7 @@ export default async function Home(){
   const jobs = await getData();
 
   return (
-    <main className="text-gray-700 flex justify-center items-center mt-[150px]">
+    <main className="text-gray-700 flex justify-center items-center lg:mt-[150px]">
       <div className="lg:w-[1340px] w-4/5">
       {jobs.map((job: jobProps) => (
         <div 
