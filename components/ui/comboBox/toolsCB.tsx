@@ -79,8 +79,8 @@ export function ToolsComboBox() {
       </PopoverTrigger>
       <PopoverContent className="w-[200px] p-0">
         <Command>
-          <CommandInput placeholder="Search language/framework..." />
-          <CommandEmpty>No language/framework found.</CommandEmpty>
+          <CommandInput placeholder="Search..." />
+          <CommandEmpty></CommandEmpty>
           <CommandGroup>
             {frameworks.map((framework) => (
               <CommandItem

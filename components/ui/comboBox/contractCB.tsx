@@ -28,8 +28,8 @@ const contracts = [
     label: "Part Time",
   },
   {
-    value: "contract",
-    label: "Contract",
+    value: "internship",
+    label: "Internship",
   },
   
 ]
