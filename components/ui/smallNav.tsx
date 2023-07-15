@@ -52,18 +52,30 @@ export default function SmallNav(){
                         </div>
                     }
                     </SheetHeader>
-                    <div className="mx-2 my-4 h-screen border rounded-lg py-2 px-4">
+                    
+                    <div className="mx-2 my-4 h-fit border rounded-lg pt-2 pb-14 px-4">
                         <div className="text-gray-600 flex justify-center items-center gap-3 h-14 text-xl border-b" >
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
                             </svg>
                             <p>Filter Settings</p>
                         </div>
-                        <div className="flex flex-col justify-start gap-10 mt-10 h-96">
+                        <div className="flex flex-col justify-start gap-8 h-fit mt-10">
                             <LocationsComboBox />
                             <ContractComboBox />
                             <ToolsComboBox />
                         </div>
+                    </div>
+                    <div className="flex items-center justify-center mt-10">
+                        <Link 
+                        className="flex items-center justify-center gap-2 w-[327px] h-[56px] bg-blue-700 rounded-lg hover:bg-blue-900
+                         active:bg-white active:text-blue-900 transition-colors text-white text-lg" 
+                        href={'/submitJob'}>
+                            <p>Submit job for $199.99</p>
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                            </svg>
+                        </Link>
                     </div>
                 </SheetContent>
             </Sheet>
