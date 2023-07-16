@@ -25,13 +25,13 @@ export default function Header(){
             <main.Provider value={{isMainMenu, setIsMainMenu}} >
                 <NavBar />
             </main.Provider>
-            <div className="absolute top-[100px] h-[75px] w-full flex items-center justify-center">
-                <div className="text-center w-full text-gray-800">
-                    <h1 className="text-3xl"><span className="text-blue-500">Tech Careers</span> for Students and Graduates :</h1>
-                    <span className="text-gray-400 font-extralight">Find Software Engineering Opportunities</span>
+            <div className="absolute top-[150px] h-[75px] w-full flex items-center justify-center">
+                <div className="text-center w-full text-gray-800 h-40">
+                    <h1 className="text-4xl mb-4"><span className="text-blue-500">Tech Careers</span> for Students and Graduates</h1>
+                    <span className="text-gray-400 font-extralight text-xl">Find Software Engineering Opportunities</span>
                 </div>
             </div>
-            <SearchBox />
+            {isMainMenu && <SearchBox />}
         </div>
     );
 }

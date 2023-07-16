@@ -5,7 +5,7 @@ import { Inter, League_Spartan } from 'next/font/google'
 
 
 const inter = Inter({ subsets: ['latin'] });
-const league_Spartan = League_Spartan({subsets: ['latin'], weight: ['500', '700']});
+const league_Spartan = League_Spartan({subsets: ['latin'], weight: ['200','300','500','700']});
 
 export const metadata: Metadata = {
   title: 'HireDEV',

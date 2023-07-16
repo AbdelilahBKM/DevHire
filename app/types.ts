@@ -12,4 +12,4 @@ export type jobProps = {
     location: string;
     languages: string[];
   
-  }
+}
