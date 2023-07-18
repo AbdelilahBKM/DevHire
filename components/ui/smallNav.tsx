@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useContext } from "react";
-import { main } from "./header";
+import { main } from "./navbar";
 import { LocationsComboBox } from "./comboBox/locationsCB";
 import { ContractComboBox } from "./comboBox/contractCB";
 import { ToolsComboBox } from "./comboBox/toolsCB";

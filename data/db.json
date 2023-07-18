@@ -11,7 +11,7 @@
       "level": "Senior",
       "postedAt": "1d ago",
       "contract": "Full Time",
-      "location": "USA Only",
+      "location": "US",
       "languages": ["HTML", "CSS", "JavaScript"]
     },
     {
@@ -40,7 +40,7 @@
       "level": "Junior",
       "postedAt": "2d ago",
       "contract": "Part Time",
-      "location": "USA Only",
+      "location": "US",
       "languages": ["JavaScript", "React", "Sass"]
     },
     {
@@ -54,7 +54,7 @@
       "level": "Junior",
       "postedAt": "5d ago",
       "contract": "Contract",
-      "location": "USA Only",
+      "location": "US",
       "languages": ["CSS", "JavaScript"]
     },
     {
@@ -82,7 +82,7 @@
       "level": "Junior",
       "postedAt": "2w ago",
       "contract": "Full Time",
-      "location": "UK Only",
+      "location": "UK",
       "languages": ["Ruby", "RoR"]
     },
     {
@@ -110,7 +110,7 @@
       "level": "Junior",
       "postedAt": "2w ago",
       "contract": "Full Time",
-      "location": "USA Only",
+      "location": "US",
       "languages": ["JavaScript", "Vue", "Sass"]
     },
     {

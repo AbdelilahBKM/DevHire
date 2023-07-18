@@ -17,6 +17,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
+import { filterContext } from "../jobListing"
 
 const locations = [
   {
@@ -44,7 +45,7 @@ const locations = [
 export function LocationsComboBox() {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState("")
-
+  const {setRegion} = React.useContext(filterContext)
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
@@ -55,7 +56,7 @@ export function LocationsComboBox() {
           className="w-full lg:w-[200px] h-[60px] justify-between"
         >
           {value
-            ? locations.find((framework) => framework.value === value)?.label
+            ? locations.find((location) => location.value === value)?.label
             : "Region"}
           <ChevronsUpDown className="ml-2 h-4 w-4 shrink-0 opacity-50" />
         </Button>
@@ -65,21 +66,22 @@ export function LocationsComboBox() {
           {/* <CommandInput placeholder="Search framework..." />
           <CommandEmpty>No framework found.</CommandEmpty> */}
           <CommandGroup>
-            {locations.map((framework) => (
+            {locations.map((location) => (
               <CommandItem
-                key={framework.value}
+                key={location.value}
                 onSelect={(currentValue) => {
                   setValue(currentValue === value ? "" : currentValue)
                   setOpen(false)
+                  setRegion(currentValue === value ? null : currentValue)
                 }}
               >
                 <Check
                   className={cn(
                     "mr-2 h-4 w-4",
-                    value === framework.value ? "opacity-100" : "opacity-0"
+                    value === location.value ? "opacity-100" : "opacity-0"
                   )}
                 />
-                {framework.label}
+                {location.label}
               </CommandItem>
             ))}
           </CommandGroup>

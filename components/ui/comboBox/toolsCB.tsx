@@ -17,6 +17,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
+import { filterContext } from "../jobListing"
 
 const frameworks = [
   {
@@ -25,7 +26,7 @@ const frameworks = [
   },
   {
     value: "python",
-    label: "python",
+    label: "Python",
   },
   {
     value: "php",
@@ -61,7 +62,7 @@ const frameworks = [
 export function ToolsComboBox() {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState("")
-
+  const {setLang} = React.useContext(filterContext)
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
@@ -88,6 +89,7 @@ export function ToolsComboBox() {
                 onSelect={(currentValue) => {
                   setValue(currentValue === value ? "" : currentValue)
                   setOpen(false)
+                  setLang(currentValue === value ? null : currentValue)
                 }}
               >
                 <Check

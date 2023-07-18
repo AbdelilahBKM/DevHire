@@ -2,7 +2,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useContext } from "react";
-import { main } from "./header";
+import { main } from "./navbar";
 
 export default function LargeNav(){
     const {isMainMenu, setIsMainMenu} = useContext(main);
