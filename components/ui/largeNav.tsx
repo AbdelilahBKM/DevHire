@@ -3,6 +3,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { useContext } from "react";
 import { main } from "./navbar";
+import { Button } from "./button";
 
 export default function LargeNav(){
     const {isMainMenu, setIsMainMenu} = useContext(main);
@@ -30,12 +31,15 @@ export default function LargeNav(){
                     href={'/engineers'}>Engineers</Link>
                 </div>
                 }
-                <div className="flex items-center">
+                <div className="flex items-center gap-1">
+                    <Link href={'/'}>
+                        <Button className="text-blue-500 text-lg" variant="link">Sign In</Button>
+                    </Link>
                     <Link 
-                    className="flex items-center justify-center gap-2 w-[227px] h-[47px] bg-blue-700 rounded-lg hover:bg-blue-900
+                    className="flex items-center justify-center gap-1 w-[227px] h-[47px] bg-blue-700 rounded-lg hover:bg-blue-900
                      active:bg-white active:text-blue-900 transition-colors text-white text-lg" 
                     href={'/'}>
-                        <p>Submit a job</p>
+                        <p>Submit job for <span className="italic">$99.99</span></p>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
                         </svg>

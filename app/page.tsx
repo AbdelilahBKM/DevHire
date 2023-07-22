@@ -1,10 +1,9 @@
 import JobListing from '@/components/ui/jobListing';
 import { jobProps } from './types';
-import SearchBox from '@/components/ui/search';
 
 const getData = async (): Promise <jobProps[]> => {
-  const res = await fetch('http://localhost:8000/job-lists', {method: 'GET'});
-  await new Promise((resolve) => setTimeout(resolve, 2500));
+  const res = await fetch('http://localhost:8000/job-lists', {method: 'GET', cache: 'no-store' });
+  // await new Promise((resolve) => setTimeout(resolve, 2500));
   const data = await res.json();
   return data;
 }

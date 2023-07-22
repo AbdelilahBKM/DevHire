@@ -56,13 +56,17 @@ const frameworks = [
     value: "laravel",
     label: "Laravel",
   },
+  {
+    value: "ror",
+    label: "Ror",
+  }
   
 ]
 
 export function ToolsComboBox() {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState("")
-  const {setLang} = React.useContext(filterContext)
+  const {setTool} = React.useContext(filterContext)
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>
@@ -89,7 +93,7 @@ export function ToolsComboBox() {
                 onSelect={(currentValue) => {
                   setValue(currentValue === value ? "" : currentValue)
                   setOpen(false)
-                  setLang(currentValue === value ? null : currentValue)
+                  setTool(currentValue === value ? null : currentValue)
                 }}
               >
                 <Check

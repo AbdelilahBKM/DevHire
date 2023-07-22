@@ -63,9 +63,9 @@ export function ContractComboBox() {
               <CommandItem
                 key={contract.value}
                 onSelect={(currentValue) => {
-                  setValue(currentValue === value ? "" : currentValue)
-                  setOpen(false)
-                  setContract(currentValue === value ? null : currentValue)
+                  setValue(currentValue === value ? "" : currentValue);
+                  setOpen(false);
+                  setContract(currentValue === value ? null : currentValue);
                 }}
               >
                 <Check

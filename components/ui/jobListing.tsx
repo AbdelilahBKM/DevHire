@@ -13,14 +13,14 @@ export interface filterContextProps {
     setSearch: Dispatch<SetStateAction<string | null>>;
     setRegion: Dispatch<SetStateAction<string | null>>;
     setContract: Dispatch<SetStateAction<string | null>>;
-    setLang: Dispatch<SetStateAction<string | null>>;
+    setTool: Dispatch<SetStateAction<string | null>>;
 } 
 
 const defaultFilter = {
     setSearch: () => {},
     setRegion: () => {},
     setContract: () => {},
-    setLang: () => {},
+    setTool: () => {},
 } as filterContextProps;
 
 export const filterContext = createContext(defaultFilter);
@@ -29,8 +29,8 @@ export default function JobListing({jobs} : jobsProps){
     const [search, setSearch ] = useState<string | null>(null);
     const [region, setRegion] = useState<string | null>(null);
     const [contract, setContract] = useState<string | null>(null);
-    const [lang, setLang] = useState<string | null>(null);
-    const [filteredJobs, setFilteredJobs] = useState<jobProps[]>([]);
+    const [tool, setTool] = useState<string | null>(null);
+    const [filteredJobs, setFilteredJobs] = useState<jobProps[]>(jobs);
 
     useEffect(() => {
         if(search){
@@ -38,14 +38,14 @@ export default function JobListing({jobs} : jobsProps){
             job.company.toLowerCase().includes(search.toLowerCase()) || job.position.toLowerCase().includes(search.toLowerCase())))
         }
         if(region){
-            setFilteredJobs(jobs.filter((job) => job.location.toLowerCase() === region))
+            setFilteredJobs(filteredJobs.filter((job) => job.location.toLowerCase() === region))
         }
         if(contract){
-            setFilteredJobs(jobs.filter((job) => job.contract.toLowerCase() === contract))
+            setFilteredJobs(filteredJobs.filter((job) => job.contract.toLowerCase() === contract))
         }
-        if(lang){
-            setFilteredJobs(jobs.filter((job) =>
-            job.languages.some((language) => language.toLowerCase() === lang.toLowerCase())
+        if(tool){
+            setFilteredJobs(filteredJobs.filter((job) =>
+            job.tools.some((tools) => tools.value === tool)
             ));
 
         } 
@@ -53,10 +53,10 @@ export default function JobListing({jobs} : jobsProps){
             setFilteredJobs(jobs);
         }
         
-    }, [search, region, contract, lang, jobs]);
+    }, [search, region, contract, tool, filteredJobs, jobs]);
     return (
         <> 
-        <filterContext.Provider value={{setSearch, setRegion, setContract, setLang}}>
+        <filterContext.Provider value={{setSearch, setRegion, setContract, setTool}}>
             <SearchBox />
         </filterContext.Provider>
         <div className="lg:w-[1340px] w-4/5">
