@@ -17,7 +17,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import { filterContext } from "../jobListing"
+import { setFilterContext } from "@/app/layout"
 
 const frameworks = [
   {
@@ -66,7 +66,7 @@ const frameworks = [
 export function ToolsComboBox() {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState("")
-  const {setTool} = React.useContext(filterContext)
+  const {setTool} = React.useContext(setFilterContext)
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>

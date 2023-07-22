@@ -17,7 +17,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import { filterContext } from "../jobListing"
+import { setFilterContext } from "@/app/layout"
 
 const locations = [
   {
@@ -45,7 +45,7 @@ const locations = [
 export function LocationsComboBox() {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState("")
-  const {setRegion} = React.useContext(filterContext)
+  const {setRegion} = React.useContext(setFilterContext)
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>

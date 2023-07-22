@@ -8,16 +8,20 @@ import { ContractComboBox } from "./comboBox/contractCB";
 import { ToolsComboBox } from "./comboBox/toolsCB";
 import {
     Sheet,
+    SheetClose,
     SheetContent,
     SheetDescription,
     SheetHeader,
     SheetTitle,
     SheetTrigger,
 } from "@/components/ui/sheet"
+import { Button } from "./button";
+
+
+
 
 export default function SmallNav(){
     const {isMainMenu, setIsMainMenu} = useContext(main);
-
     return(
         <nav className="flex items-center justify-between lg:hidden h-[75px] w-11/12">
             <div className="flex items-center gap-2">
@@ -32,24 +36,23 @@ export default function SmallNav(){
                 </SheetTrigger>
                 <SheetContent>
                     <SheetHeader>
-                        <SheetTitle>Menu</SheetTitle>
                         {isMainMenu ? 
-                        <div className="flex items-center w-full justify-between text-xl">
+                        <button type="submit" className="flex items-center w-full justify-between text-xl mt-4">
                             <Link 
                             className="flex items-center w-1/2 border-b-2 transition-transform text-blue-700 border-blue-600 h-full justify-center" 
                             href={'/'}>Jobs</Link>
                             <Link onClick={() => setIsMainMenu((prev: boolean) => !prev)}
                             className="flex items-center w-1/2 hover:text-blue-700 transition ease-in-out border-blue-600 h-full justify-center" 
                             href={'/engineers'}>Engineers</Link>
-                        </div> : 
-                        <div className="flex items-center w-full justify-between text-xl">
+                        </button> :
+                        <button type="submit" className="flex items-center w-full justify-between text-xl">
                             <Link onClick={() => setIsMainMenu((prev: boolean) => !prev)}
                             className="flex items-center w-1/2 hover:text-blue-700 transition ease-in-out border-blue-600 h-full justify-center" 
                             href={'/'}>Jobs</Link>
                             <Link 
                             className="flex items-center w-1/2 border-b-2 transition-transform text-blue-700 border-blue-600 h-full justify-center" 
                             href={'/engineers'}>Engineers</Link>
-                        </div>
+                        </button>
                     }
                     </SheetHeader>
                     
@@ -64,6 +67,9 @@ export default function SmallNav(){
                             <LocationsComboBox />
                             <ContractComboBox />
                             <ToolsComboBox />
+                            <SheetClose asChild>
+                                <Button variant="outline" className="text-lg text-gray-600" type="submit">Save changes</Button>
+                            </SheetClose>
                         </div>
                     </div>
                     <div className="flex items-center justify-center mt-10">

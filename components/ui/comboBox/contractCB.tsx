@@ -17,7 +17,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import { filterContext } from "../jobListing"
+import { setFilterContext } from "@/app/layout"
 
 const contracts = [
   {
@@ -38,7 +38,7 @@ const contracts = [
 export function ContractComboBox() {
   const [open, setOpen] = React.useState(false)
   const [value, setValue] = React.useState("")
-  const {setContract} = React.useContext(filterContext);
+  const {setContract} = React.useContext(setFilterContext);
   return (
     <Popover open={open} onOpenChange={setOpen}>
       <PopoverTrigger asChild>

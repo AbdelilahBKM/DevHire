@@ -1,12 +1,15 @@
-import { useContext, useRef } from "react";
+import { Dispatch, SetStateAction, useContext, useRef } from "react";
 import { ContractComboBox } from "./comboBox/contractCB";
 import { LocationsComboBox } from "./comboBox/locationsCB";
 import { ToolsComboBox } from "./comboBox/toolsCB";
-import { filterContext } from "./jobListing";
+import { filterContext } from "@/app/layout";
+
+export interface setSearchAction {
+    setSearch: Dispatch<SetStateAction<string | null>>
+}
 
 
-export default function SearchBox(){
-    const {setSearch} = useContext(filterContext);
+export default function SearchBox({setSearch}: setSearchAction){
     const searchRef = useRef<HTMLInputElement>(null);
     
     const handleClick = () => {
