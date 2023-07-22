@@ -14,28 +14,39 @@ export default function JobListing({jobs} : jobsProps){
   const [filteredJobs, setFilteredJobs] = useState<jobProps[]>(jobs);
   const {region, contract, tool} = useContext(filterContext);
 
-    useEffect(() => {
-        if(search){
-            setFilteredJobs(jobs.filter((job) => 
-            job.company.toLowerCase().includes(search.toLowerCase()) || job.position.toLowerCase().includes(search.toLowerCase())))
-        }
-        if(region){
-            setFilteredJobs(filteredJobs.filter((job) => job.location.toLowerCase() === region))
-        }
-        if(contract){
-            setFilteredJobs(filteredJobs.filter((job) => job.contract.toLowerCase() === contract))
-        }
-        if(tool){
-            setFilteredJobs(filteredJobs.filter((job) =>
-            job.tools.some((tools) => tools.value === tool)
-            ));
-
-        } 
-        if(!search && !region && !contract && !tool) {
-            setFilteredJobs(jobs);
-        }
-        
-    }, [search, region, contract, tool, filteredJobs, jobs]);
+  useEffect(() => {
+    let filteredJobsResult = jobs;
+  
+    if (search) {
+      filteredJobsResult = filteredJobsResult.filter(
+        (job) =>
+          job.company.toLowerCase().includes(search.toLowerCase()) ||
+          job.position.toLowerCase().includes(search.toLowerCase())
+      );
+    }
+    if (region) {
+      filteredJobsResult = filteredJobsResult.filter(
+        (job) => job.location.toLowerCase() === region
+      );
+    }
+    if (contract) {
+      filteredJobsResult = filteredJobsResult.filter(
+        (job) => job.contract.toLowerCase() === contract
+      );
+    }
+    if (tool) {
+      filteredJobsResult = filteredJobsResult.filter((job) =>
+        job.tools.some((tools) => tools.value === tool)
+      );
+    }
+  
+    if (!search && !region && !contract && !tool) {
+      filteredJobsResult = jobs;
+    }
+  
+    setFilteredJobs(filteredJobsResult);
+  }, [search, region, contract, tool, jobs]);
+  
     return (
         <> 
         <SearchBox setSearch={setSearch} />

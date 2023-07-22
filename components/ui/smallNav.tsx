@@ -45,7 +45,7 @@ export default function SmallNav(){
                             className="flex items-center w-1/2 hover:text-blue-700 transition ease-in-out border-blue-600 h-full justify-center" 
                             href={'/engineers'}>Engineers</Link>
                         </button> :
-                        <button type="submit" className="flex items-center w-full justify-between text-xl">
+                        <button type="submit" className="flex items-center w-full justify-between text-xl mt-4">
                             <Link onClick={() => setIsMainMenu((prev: boolean) => !prev)}
                             className="flex items-center w-1/2 hover:text-blue-700 transition ease-in-out border-blue-600 h-full justify-center" 
                             href={'/'}>Jobs</Link>
