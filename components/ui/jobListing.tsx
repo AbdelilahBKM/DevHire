@@ -51,7 +51,7 @@ export default function JobListing({jobs} : jobsProps){
         <> 
         <SearchBox setSearch={setSearch} />
 
-        <div className="lg:w-[1340px] w-4/5">
+        <div className="lg:w-[1340px] w-11/12">
             {filteredJobs.map((job: jobProps) => (
                 <JobDetails job={job} key={job.id}/>
             ))}

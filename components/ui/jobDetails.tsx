@@ -43,7 +43,7 @@ export default function JobDetails({job}: jobPropreties){
                 </div>
                 
                 <div className="lg:hidden border-t border-cyan-400"></div>
-                <div className="flex items-center w-1/2">
+                <div className="flex items-center lg:w-1/2">
                     <div className="flex w-full lg:w-[70%] items-center justify-start flex-wrap py-8 gap-1">
                         <div className="bg-slate-200 text-cyan-600 px-3 py-1 rounded cursor-pointer hover:bg-cyan-600 hover:text-white transition-colors" 
                         key={job.role}>{job.role}</div>
