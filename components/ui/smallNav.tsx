@@ -77,7 +77,7 @@ export default function SmallNav(){
                         className="flex items-center justify-center gap-2 w-[327px] h-[56px] bg-blue-700 rounded-lg hover:bg-blue-900
                          active:bg-white active:text-blue-900 transition-colors text-white text-lg" 
                         href={'/submitJob'}>
-                            <p>Submit job for $199.99</p>
+                            <p>Submit job for $199</p>
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                                 <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
                             </svg>
