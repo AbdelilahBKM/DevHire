@@ -32,7 +32,7 @@ export default function LargeNav(){
                 </div>
                 }
                 <div className="flex items-center gap-1">
-                    <Link href={'/'}>
+                    <Link href={'/sign-in'}>
                         <Button className="text-blue-500 text-lg" variant="link">Sign In</Button>
                     </Link>
                     <Link 

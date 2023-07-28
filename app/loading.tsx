@@ -1,6 +1,5 @@
 "use client"
 import { Skeleton } from "@/components/ui/skeleton";
-import SearchBox from "@/components/ui/search";
 import { LocationsComboBox } from "@/components/ui/comboBox/locationsCB";
 import { ContractComboBox } from "@/components/ui/comboBox/contractCB";
 import { ToolsComboBox } from "@/components/ui/comboBox/toolsCB";

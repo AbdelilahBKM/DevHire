@@ -30,7 +30,7 @@ export default function JobDetails({job}: jobPropreties){
                             {job.featured && <div className="text-white text-xs rounded-xl bg-gray-700 h-fit px-2 py-1">FEATURED</div>}
                             </div>
                         </div>
-                        <div onClick={() => setIsActive(prev => !prev)}
+                        <div onClick={() => setIsActive(true)}
                         className="text-cyan-700 font-light text-2xl w-full cursor-pointer hover:text-cyan-950 transition-colors">{job.position}</div>
                         <div className="flex gap-2 text-cyan-500 cursor-pointer">
                             <div>{job.postedAt}</div>

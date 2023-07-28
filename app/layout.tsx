@@ -4,7 +4,6 @@ import './globals.css'
 import type { Metadata } from 'next'
 import { Inter, League_Spartan } from 'next/font/google'
 import { Dispatch, SetStateAction, createContext, useState } from 'react';
-import { jobProps } from './types';
 
 
 const inter = Inter({ subsets: ['latin'] });
