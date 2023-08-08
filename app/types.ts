@@ -10,7 +10,7 @@ export type jobProps = {
     postedAt: string;
     contract: string;
     location: string;
-    tools: {
+    technologies: {
         name: string, 
         value: string
     }[];

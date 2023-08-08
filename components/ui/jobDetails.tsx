@@ -49,7 +49,7 @@ export default function JobDetails({job}: jobPropreties){
                         key={job.role}>{job.role}</div>
                         <div className="bg-slate-200 text-cyan-600 px-3 py-1 rounded cursor-pointer hover:bg-cyan-600 hover:text-white transition-colors" 
                         key={job.level}>{job.level}</div>
-                        {job.tools.map((tool: {name: string, value: string}) => (  
+                        {job.technologies.map((tool: {name: string, value: string}) => (  
                             <div className="bg-slate-200 text-cyan-600 px-3 py-1 rounded cursor-pointer hover:bg-cyan-600 hover:text-white transition-colors" 
                             key={tool.value}>{tool.name}</div> 
                             ))}

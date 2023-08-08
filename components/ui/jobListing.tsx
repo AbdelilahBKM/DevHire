@@ -36,7 +36,7 @@ export default function JobListing({jobs} : jobsProps){
     }
     if (tool) {
       filteredJobsResult = filteredJobsResult.filter((job) =>
-        job.tools.some((tools) => tools.value === tool)
+        job.technologies.some((tech) => tech.value === tool)
       );
     }
   

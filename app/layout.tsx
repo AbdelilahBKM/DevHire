@@ -1,12 +1,12 @@
-"use client"
-import Header from '@/components/ui/header';
-import './globals.css'
-import type { Metadata } from 'next'
-import { Inter, League_Spartan } from 'next/font/google'
+"use client";
+import './globals.css';
+import type { Metadata } from 'next';
+import { League_Spartan } from 'next/font/google';
 import { Dispatch, SetStateAction, createContext, useState } from 'react';
+import Header from '@/components/ui/header';
+import Footer from '@/components/ui/footer';
 
 
-const inter = Inter({ subsets: ['latin'] });
 const league_Spartan = League_Spartan({subsets: ['latin'], weight: ['200','300','500','700']});
 
 export const metadata: Metadata = {
@@ -55,8 +55,15 @@ export default function RootLayout({
         <div className="w-full bg-cyan-100">
           <setFilterContext.Provider value={{setRegion, setContract, setTool}}>
             <filterContext.Provider value={{region, contract, tool}}>
-              <Header />
-              {children}
+
+
+                <Header />
+                {children}
+                <Footer />
+
+
+
+                
             </filterContext.Provider>
           </setFilterContext.Provider>
         </div>

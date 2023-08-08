@@ -1,0 +1,72 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                String        @id @default(cuid())
+  username          String        @db.VarChar(32)       @unique
+  email             String        @db.VarChar(255)      @unique
+  password          String        @db.VarChar(255)
+  fullname          String        @db.VarChar(255)
+  avatar            String?
+  resume            String
+  saved_jobs        Job[]         @relation("savedJobs")
+  applied_jobs      Applied[]
+  createdAt         DateTime      @default(now())
+  updatedAt         DateTime      @updatedAt
+}
+
+model Technology {
+  id               String         @id @default(cuid())
+  name             String         @unique
+  value            String         @unique
+  jobs             Job[]          @relation("jobTechnologies")
+}
+
+
+model Job {
+  id               String         @id @default(uuid())
+  position         String   
+  role             String
+  level            String
+  location         String
+  contractType     String
+  technologies     Technology[]   @relation("jobTechnologies")
+  saved_users      User[]         @relation("savedJobs")
+  applied_users    Applied[]
+  company          Company        @relation(fields: [companyId], references: [id])
+  companyId        String
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+}
+
+model Applied {
+  user              User            @relation(fields: [user_id], references: [id])
+  user_id           String          @unique
+
+  job               Job             @relation(fields: [job_id], references: [id])
+  job_id            String          @unique
+
+  application_date  DateTime        @default(now())
+  @@id([user_id, job_id])
+}
+
+
+model Company {
+  id                String         @id @default(cuid())
+  name              String
+  logo              String?
+  location          String
+  website           String?
+  createdAt         DateTime       @default(now())
+  updatedAt         DateTime       @updatedAt
+  jobs              Job[]
+}
