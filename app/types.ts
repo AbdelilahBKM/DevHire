@@ -9,7 +9,10 @@ export type jobProps = {
     level: string;
     postedAt: string;
     contract: string;
-    location: string;
+    jobLocation: string;
+    companyLocation: string;
+    adress: string;
+    city: string;
     technologies: {
         name: string, 
         value: string

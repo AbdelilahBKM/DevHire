@@ -16,6 +16,7 @@ model User {
   email             String        @db.VarChar(255)      @unique
   password          String        @db.VarChar(255)
   fullname          String        @db.VarChar(255)
+  phone_number      String        @db.VarChar(64)
   avatar            String?
   resume            String
   saved_jobs        Job[]         @relation("savedJobs")
@@ -26,8 +27,8 @@ model User {
 
 model Technology {
   id               String         @id @default(cuid())
-  name             String         @unique
-  value            String         @unique
+  name             String         
+  value            String         
   jobs             Job[]          @relation("jobTechnologies")
 }
 
@@ -65,7 +66,10 @@ model Company {
   name              String
   logo              String?
   location          String
+  adress            String?
+  city              String?
   website           String?
+  phone_number      String         @db.VarChar(64)
   createdAt         DateTime       @default(now())
   updatedAt         DateTime       @updatedAt
   jobs              Job[]
