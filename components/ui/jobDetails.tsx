@@ -1,41 +1,65 @@
 "use client"
 import Image from "next/image";
 import Link from "next/link";
-import { jobProps } from "@/app/types";
+import { Job, Company, Technology } from "@/app/types";
 import { Button } from "./button";
 import { useState } from "react";
 
 export interface jobPropreties {
-    job: jobProps
+    job: Job
 }
 
+function formatDateDifference(date: Date): string {
+    const currentDate = new Date()
+    const timeDifference = currentDate.getTime() - date.getTime()
+    const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24))
+  
+    if (daysDifference === 0) {
+      return 'today'
+    } else if (daysDifference === 1) {
+      return '1 day ago'
+    } else if (daysDifference < 30) {
+      return `${daysDifference} days ago`
+    } else if (daysDifference === 30){
+        return "one month ago"
+    } else {
+      return 'more than a month ago'
+    }
+  }
+
+function isJobNew(date: Date): boolean {
+    const currentDate = new Date()
+    const timeDifference = currentDate.getTime() - date.getTime()
+    const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24))
+    return daysDifference <= 7
+}
+  
 export default function JobDetails({job}: jobPropreties){
-    const [isActive, setIsActive] = useState(false);
-    
+    const [isActive, setIsActive] = useState(false)
+    const {company, technologies} = job
     return (
         <div className="relative rounded shadow-lg bg-white mb-8 lg:mb-2 px-8 lg:px-10 pt-14 lg:pt-4 pb-px h-auto">
-            {job.featured && <div className="absolute left-0 top-0 rounded-s w-2 h-full border-l-4 border-gray-700"></div>}
+            <div className="absolute left-0 top-0 rounded-s w-2 h-full border-l-4 border-gray-700"></div>
             <div className="flex flex-col lg:flex-row lg:items-center w-full h-fit pb-2 lg:pb-0">                
                 <div className="flex flex-col lg:flex-row gap-4 lg:items-center lg:w-1/2">
-                    <Image src={job.logo} alt="logo" width={60} height={60} 
+                    <Image src={company.logo || ''} alt="logo" width={60} height={60} 
                     className="lg:w-[75px] lg:h-[75px] absolute left-8 lg:left-0 top-[-15px] lg:top-0 lg:relative"/>
                     <div className=" flex flex-col gap-2">
                         <div className="flex lg:gap-2 items-center justify-between lg:justify-start">
                             <Link href={'/' + job.id}>
-                            <div className="text-cyan-600 font-semibold text-xl lg:text-base cursor-pointer hover:underline transition">{job.company}
+                            <div className="text-cyan-600 font-semibold text-xl lg:text-base cursor-pointer hover:underline transition">{company.name}
                             </div>
                             </Link>
                             <div className="flex gap-2">
-                            {job.new && <div className="text-white text-xs rounded-xl bg-cyan-600 h-fit px-2 py-1">NEW!</div>}
-                            {job.featured && <div className="text-white text-xs rounded-xl bg-gray-700 h-fit px-2 py-1">FEATURED</div>}
+                            {/* {isJobNew(job.createdAt) && <div className="text-white text-xs rounded-xl bg-cyan-600 h-fit px-2 py-1">NEW!</div>} */}
                             </div>
                         </div>
                         <div onClick={() => setIsActive(true)}
                         className="text-cyan-700 font-light text-2xl w-full cursor-pointer hover:text-cyan-950 transition-colors">{job.position}</div>
                         <div className="flex gap-2 text-cyan-500 cursor-pointer">
-                            <div>{job.postedAt}</div>
+                            <div>{formatDateDifference(job.createdAt)} </div>
                             <div>.</div>
-                            <div>{job.contract}</div>
+                            <div>{job.contractType}</div>
                             <div>.</div>
                             <div>{job.location}</div>
                         </div>
@@ -116,4 +140,8 @@ export default function JobDetails({job}: jobPropreties){
           
         </div>
     );
+}
+
+function parseISO(date: Date) {
+    throw new Error("Function not implemented.");
 }
