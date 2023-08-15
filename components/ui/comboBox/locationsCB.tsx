@@ -29,15 +29,23 @@ const locations = [
     label: "Worldwide",
   },
   {
-    value: "europe",
-    label: "Europe",
-  },
-  {
     value: "us",
     label: "US",
   },
   {
-    value: "morocco",
+    value: "uk",
+    label: "UK",
+  },
+  {
+    value: "fr",
+    label: "France",
+  },
+  {
+    value: "de",
+    label: "Germany",
+  },
+  {
+    value: "ma",
     label: "Morocco",
   },
 ]

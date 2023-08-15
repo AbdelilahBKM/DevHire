@@ -9,9 +9,10 @@ export interface jobPropreties {
     job: Job
 }
 
-function formatDateDifference(date: Date): string {
+export function formatDateDifference(mySQLdate: Date): string {
+    const jsDate = new Date(mySQLdate)
     const currentDate = new Date()
-    const timeDifference = currentDate.getTime() - date.getTime()
+    const timeDifference = currentDate.getTime() - jsDate.getTime()
     const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24))
   
     if (daysDifference === 0) {
@@ -27,9 +28,10 @@ function formatDateDifference(date: Date): string {
     }
   }
 
-function isJobNew(date: Date): boolean {
+function isJobNew(mySQLdate: Date): boolean {
+    const jsDate = new Date(mySQLdate)
     const currentDate = new Date()
-    const timeDifference = currentDate.getTime() - date.getTime()
+    const timeDifference = currentDate.getTime() - jsDate.getTime()
     const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24))
     return daysDifference <= 7
 }
@@ -51,7 +53,7 @@ export default function JobDetails({job}: jobPropreties){
                             </div>
                             </Link>
                             <div className="flex gap-2">
-                            {/* {isJobNew(job.createdAt) && <div className="text-white text-xs rounded-xl bg-cyan-600 h-fit px-2 py-1">NEW!</div>} */}
+                            {isJobNew(job.createdAt) && <div className="text-white text-xs rounded-xl bg-cyan-600 h-fit px-2 py-1">NEW!</div>}
                             </div>
                         </div>
                         <div onClick={() => setIsActive(true)}
@@ -73,7 +75,7 @@ export default function JobDetails({job}: jobPropreties){
                         key={job.role}>{job.role}</div>
                         <div className="bg-slate-200 text-cyan-600 px-3 py-1 rounded cursor-pointer hover:bg-cyan-600 hover:text-white transition-colors" 
                         key={job.level}>{job.level}</div>
-                        {job.technologies.map((tool: {name: string, value: string}) => (  
+                        {technologies.map((tool: {name: string, value: string}) => (  
                             <div className="bg-slate-200 text-cyan-600 px-3 py-1 rounded cursor-pointer hover:bg-cyan-600 hover:text-white transition-colors" 
                             key={tool.value}>{tool.name}</div> 
                             ))}

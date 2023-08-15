@@ -11,7 +11,7 @@ export default async function Home(){
   
   const data = await getJobs()
   const {jobs} = data
-  console.log(jobs)
+
   return (
     <main className="relative text-gray-700 flex justify-center items-center lg:mt-[150px]">
       <JobListing jobs={jobs} />
