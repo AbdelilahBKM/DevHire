@@ -17,7 +17,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover"
-import { setFilterContext } from "@/app/layout"
+import { setFilterContext } from "../jobListing"
 
 const frameworks = [
   {

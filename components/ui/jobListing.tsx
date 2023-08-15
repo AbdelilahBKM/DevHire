@@ -3,9 +3,41 @@
 import { Job } from "@/app/types"
 import JobDetails from '@/components/ui/jobDetails'
 import SearchBox from "./search"
-import { useEffect, useState, useContext } from "react"
-import { filterContext } from "@/app/layout"
+import SheetMenu from "./filterSheet"
+import { 
+  Dispatch, 
+  SetStateAction, 
+  createContext, 
+  useState,
+  useEffect
+} from 'react';
 
+interface filterContextProps {
+  region: string | null
+  contract: string | null
+  tool: string | null
+}
+const defaultFilterState = {
+  region: null,
+  contract: null,
+  tool: null
+} as filterContextProps
+
+export const filterContext = createContext(defaultFilterState);
+
+interface setFilterContextProps {
+  setRegion: Dispatch<SetStateAction<string | null>>
+  setContract: Dispatch<SetStateAction<string | null>>
+  setTool: Dispatch<SetStateAction<string | null>>
+} 
+
+const defaultFilterFunctions = {
+  setRegion: () => {},
+  setContract: () => {},
+  setTool: () => {},
+} as setFilterContextProps
+
+export const setFilterContext = createContext(defaultFilterFunctions)
 export interface jobsProps {
     jobs: Job[];
 }
@@ -19,7 +51,9 @@ export default function JobListing(
 
   const [search, setSearch ] = useState<string | null>(null)
   const [filteredJobs, setFilteredJobs] = useState<Job[]>(jobs)
-  const {region, contract, tool} = useContext(filterContext)
+  const [region, setRegion] = useState<string | null>(null)
+  const [contract, setContract] = useState<string | null>(null)
+  const [tool, setTool] = useState<string | null>(null)
 
   useEffect(() => {
     let filteredJobsResult = jobs
@@ -56,13 +90,17 @@ export default function JobListing(
   
     return (
         <> 
-        <SearchBox setSearch={setSearch} />
+        <setFilterContext.Provider value={{setRegion, setContract, setTool}}>
+            <filterContext.Provider value={{region, contract, tool}}>
 
-        <div className="lg:w-[1340px] w-11/12">
-            {filteredJobs.map((job: Job) => (
-                <JobDetails job={job} key={job.id}/>
-            ))}
-        </div>
+              <SearchBox setSearch={setSearch} />
+              <div className="lg:w-[1340px] w-11/12">
+                  {filteredJobs.map((job: Job) => (
+                    <JobDetails job={job} key={job.id}/>
+                    ))}
+              </div>
+            </filterContext.Provider>
+          </setFilterContext.Provider>
         </>
     );
 }
