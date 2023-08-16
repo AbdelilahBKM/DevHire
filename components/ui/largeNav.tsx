@@ -34,12 +34,12 @@ export default function LargeNav(){
                 }
                 <div className="flex items-center gap-1">
                     {/* <Link href={'/sign-in'}> */}
-                        <Button onClick={() => signIn("github")} className="text-blue-500 text-lg" variant="link">Sign In</Button>
+                        <Button className="text-blue-500 text-lg" variant="link">Sign In</Button>
                     {/* </Link> */}
                     <Link 
                     className="flex items-center justify-center gap-1 w-[227px] h-[47px] bg-blue-700 rounded-lg hover:bg-blue-900
                      active:bg-white active:text-blue-900 transition-colors text-white text-lg" 
-                    href={'/submit-job'}>
+                    href={'/'}>
                         <p>Submit job for <span className="italic">$199</span></p>
                         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                             <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
