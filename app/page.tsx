@@ -3,7 +3,7 @@ import { Job, Company, User,  } from './types';
 
 
 const getJobs = async () => {
-  const res = await fetch("http://localhost:3000/api/getJobs")
+  const res = await fetch(`${process.env.API_URL}/api/getJobs`)
   return res.json()
 }
 
