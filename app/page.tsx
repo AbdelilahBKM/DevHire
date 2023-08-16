@@ -3,7 +3,8 @@ import { Job, Company, User,  } from './types';
 
 
 const getJobs = async () => {
-  const res = await fetch(`${process.env.API_URL}/api/getJobs`)
+  const API_URL = process.env.API_URL
+  const res = await fetch(`${API_URL}/api/getJobs`)
   return res.json()
 }
 
