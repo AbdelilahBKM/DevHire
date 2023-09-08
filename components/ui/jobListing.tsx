@@ -3,14 +3,13 @@
 import { Job } from "@/app/types"
 import JobDetails from '@/components/ui/jobDetails'
 import SearchBox from "./search"
-import SheetMenu from "./filterSheet"
 import { 
   Dispatch, 
   SetStateAction, 
   createContext, 
   useState,
   useEffect
-} from 'react';
+} from 'react'
 
 interface filterContextProps {
   region: string | null
@@ -23,7 +22,7 @@ const defaultFilterState = {
   tool: null
 } as filterContextProps
 
-export const filterContext = createContext(defaultFilterState);
+export const filterContext = createContext(defaultFilterState)
 
 interface setFilterContextProps {
   setRegion: Dispatch<SetStateAction<string | null>>
@@ -39,7 +38,7 @@ const defaultFilterFunctions = {
 
 export const setFilterContext = createContext(defaultFilterFunctions)
 export interface jobsProps {
-    jobs: Job[];
+    jobs: Job[]
 }
 
 export default function JobListing(
