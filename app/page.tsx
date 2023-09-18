@@ -1,5 +1,4 @@
 import JobListing from '@/components/ui/jobListing';
-import { Job, Company, User,  } from './types';
 
 
 const getJobs = async () => {
@@ -17,5 +16,5 @@ export default async function Home(){
     <main className="relative text-gray-700 flex justify-center items-center lg:mt-[150px]">
       <JobListing jobs={jobs} />
     </main>
-  );
+  )
 }
