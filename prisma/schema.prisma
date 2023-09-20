@@ -10,21 +10,6 @@ datasource db {
   url      = env("RAILWAY_DATABASE_URL")
 }
 
-model User {
-  id                String        @id @default(cuid())
-  username          String        @db.VarChar(32)       @unique
-  email             String        @db.VarChar(255)      @unique
-  password          String        @db.VarChar(255)
-  fullname          String        @db.VarChar(255)
-  phone_number      String        @db.VarChar(64)
-  avatar            String?
-  resume            String
-  saved_jobs        Job[]         @relation("savedJobs")
-  applied_jobs      Job[]         @relation("appliedTo")
-  createdAt         DateTime      @default(now())
-  updatedAt         DateTime      @updatedAt
-}
-
 model Technology {
   id               String         @id @default(cuid())
   name             String         
@@ -41,8 +26,6 @@ model Job {
   location         String
   contractType     String
   technologies     Technology[]   @relation("jobTechnologies")
-  saved_users      User[]         @relation("savedJobs")
-  applied_users    User[]         @relation("appliedTo")
   company          Company        @relation(fields: [companyId], references: [id])
   companyId        String
   createdAt        DateTime       @default(now())

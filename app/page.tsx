@@ -1,4 +1,4 @@
-import JobListing from '@/components/ui/jobListing';
+import JobListing from '@/components/ui/jobListing'
 
 
 const getJobs = async () => {

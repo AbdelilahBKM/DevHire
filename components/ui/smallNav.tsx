@@ -2,7 +2,6 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useContext } from "react";
-import { main } from "./navbar";
 import { LocationsComboBox } from "./comboBox/locationsCB";
 import { ContractComboBox } from "./comboBox/contractCB";
 import { ToolsComboBox } from "./comboBox/toolsCB";
@@ -19,7 +18,6 @@ import { Button } from "./button";
 
 
 export default function SmallNav(){
-    const {isMainMenu, setIsMainMenu} = useContext(main);
     return(
         <nav className="flex items-center justify-between lg:hidden h-[75px] w-11/12">
             <div className="flex items-center gap-2">
@@ -34,41 +32,6 @@ export default function SmallNav(){
                         </svg>
                     </Button>
                 </Link>
-                <Sheet>
-                    <SheetTrigger>
-                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-10 h-10">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                        </svg>
-                    </SheetTrigger>
-                    <SheetContent side={"top"}>
-                            {isMainMenu ? 
-                            <div className="flex w-full justify-between text-xl mt-4">
-                                <SheetClose asChild >
-                                    <Link 
-                                    className="flex items-center w-1/2 border-b-2 transition-transform text-blue-700 border-blue-600 h-full justify-center" 
-                                    href={'/'}>Jobs</Link>
-                                </SheetClose>
-                                <SheetClose asChild>
-                                    <Link onClick={() => setIsMainMenu((prev: boolean) => !prev)}
-                                    className="flex items-center w-1/2 hover:text-blue-700 transition ease-in-out border-blue-600 h-full justify-center" 
-                                    href={'/engineers'}>Engineers</Link>
-                                </SheetClose>
-                            </div> :
-                            <div className="flex w-full justify-between text-xl mt-4">
-                                <SheetClose asChild>
-                                    <Link onClick={() => setIsMainMenu((prev: boolean) => !prev)}
-                                    className="flex items-center w-1/2 hover:text-blue-700 transition ease-in-out border-blue-600 h-full justify-center" 
-                                    href={'/'}>Jobs</Link>
-                                </SheetClose>
-                                <SheetClose asChild>
-                                    <Link 
-                                    className="flex items-center w-1/2 border-b-2 transition-transform text-blue-700 border-blue-600 h-full justify-center" 
-                                    href={'/engineers'}>Engineers</Link>
-                                </SheetClose>
-                            </div>
-                        }
-                    </SheetContent>
-                </Sheet>
             </div>
         </nav>
     );
