@@ -7,7 +7,7 @@ generator client {
 
 datasource db {
   provider = "mysql"
-  url      = env("RAILWAY_DATABASE_URL")
+  url      = env("DATABASE_URL")
 }
 
 model Technology {
@@ -30,8 +30,18 @@ model Job {
   companyId        String
   createdAt        DateTime       @default(now())
   updatedAt        DateTime       @updatedAt
+  description      String?         @db.LongText @default("")
+  idealCandidate   String?         @db.LongText @default("")
+  requirement      Requirement[]  
 }
 
+model Requirement {
+  id              String      @id @default(uuid())
+  title           String      @db.VarChar(64)
+  description     String      @db.MediumText
+  jobId           String
+  job             Job         @relation(fields: [jobId], references: [id])
+}
 
 
 
