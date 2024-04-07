@@ -41,6 +41,7 @@ export interface jobsProps {
     jobs: Job[]
 }
 
+// main
 export default function JobListing(
     {
         jobs
