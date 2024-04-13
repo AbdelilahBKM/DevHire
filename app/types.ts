@@ -1,5 +1,31 @@
+export interface JobData {
+    _id: string;
+    position: string;
+    role: string;
+    level: string;
+    location: string;
+    contractType: string;
+    technologies: string[];
+    company: string;
+    createdAt: Date;
+    updatedAt: Date;
+}
+export interface CompanyData {
+    _id: string;
+    name: string;
+    logo?: string | null;
+    location: string;
+    adress?: string | null;
+    city?: string | null;
+    website?: string | null;
+    phone_number: string;
+    createdAt: Date;
+    updatedAt: Date;
+    jobs: string[];
+}
+
 export type User = {
-    id: string;
+    _id: string;
     username: string;
     email: string;
     password: string;
@@ -8,43 +34,31 @@ export type User = {
     avatar?: string | null;
     resume: string;
     saved_job: Job[];
-    applied_job: Applied[];
     createdAt: Date;
     updatedAt: Date;
 }
 
 export type Technology = {
-    id: string;
+    _id: string;
     name: string;
     value: string;
-    jobs: Job[];
 }
 
 export type Job = {
-    id: string;
+    _id: string;
     position: string;
     role: string;
     level: string;
     location: string;
     contractType: string;
     technologies: Technology[];
-    saved_users: User[];
-    applied_users: Applied[];
-    company: Company;
-    companyId: string;
+    company: CompanyData;
     createdAt: Date;
     updatedAt: Date;
 }
 
-export type Applied = {
-    user_id: String;
-    job_id: string;
-    application_date: Date;
-
-}
-
 export type Company = {
-    id: string;
+    _id: string;
     name: string;
     logo?: string | null;
     location: string;

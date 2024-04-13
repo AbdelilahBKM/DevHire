@@ -96,7 +96,7 @@ export default function JobListing(
               <SearchBox setSearch={setSearch} />
               <div className="lg:w-[1340px] w-11/12">
                   {filteredJobs.map((job: Job) => (
-                    <JobDetails job={job} key={job.id}/>
+                    <JobDetails job={job} key={job._id}/>
                     ))}
               </div>
             </filterContext.Provider>

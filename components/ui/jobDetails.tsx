@@ -9,8 +9,8 @@ export interface jobPropreties {
     job: Job
 }
 
-export function formatDateDifference(mySQLdate: Date): string {
-    const jsDate = new Date(mySQLdate)
+export function formatDateDifference(dbDate: Date): string {
+    const jsDate = new Date(dbDate)
     const currentDate = new Date()
     const timeDifference = currentDate.getTime() - jsDate.getTime()
     const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24))
@@ -28,8 +28,8 @@ export function formatDateDifference(mySQLdate: Date): string {
     }
   }
 
-function isJobNew(mySQLdate: Date): boolean {
-    const jsDate = new Date(mySQLdate)
+function isJobNew(dbDate: Date): boolean {
+    const jsDate = new Date(dbDate)
     const currentDate = new Date()
     const timeDifference = currentDate.getTime() - jsDate.getTime()
     const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24))
@@ -48,7 +48,7 @@ export default function JobDetails({job}: jobPropreties){
                     className="lg:w-[75px] lg:h-[75px] absolute left-8 lg:left-0 top-[-15px] lg:top-0 lg:relative"/>
                     <div className=" flex flex-col gap-2">
                         <div className="flex lg:gap-2 items-center justify-between lg:justify-start">
-                            <Link href={'/' + job.id}>
+                            <Link href={'/' + job._id}>
                             <div className="text-cyan-600 font-semibold text-xl lg:text-base cursor-pointer hover:underline transition">{company.name}
                             </div>
                             </Link>
@@ -82,11 +82,11 @@ export default function JobDetails({job}: jobPropreties){
                     </div>
                     <div className="w-[30%] flex justify-end">
                         {isActive ? 
-                        <Button key={job.id} onClick={() => setIsActive(prev => !prev)} 
+                        <Button key={job._id} onClick={() => setIsActive(prev => !prev)}
                         className="hidden lg:block text-lg font-light text-blue-700 hover:text-blue-700 border border-blue-700" 
                         variant="ghost">Less Details</Button> 
                         :
-                        <Button key={job.id} onClick={() => setIsActive(prev => !prev)} 
+                        <Button key={job._id} onClick={() => setIsActive(prev => !prev)}
                         className="hidden lg:block text-lg font-light text-blue-700 hover:text-blue-700" 
                         variant="ghost">More Details</Button>  
                         }
@@ -95,11 +95,11 @@ export default function JobDetails({job}: jobPropreties){
           </div>
           <div className="w-full flex justify-end my-2 px-3">
                 {isActive ? 
-                <Button key={job.id} onClick={() => setIsActive(prev => !prev)} 
+                <Button key={job._id} onClick={() => setIsActive(prev => !prev)}
                 className="block lg:hidden text-lg font-light text-blue-700 hover:text-blue-700 border border-blue-700" 
                 variant="ghost">Less Details</Button> 
                 :
-                <Button key={job.id} onClick={() => setIsActive(prev => !prev)} 
+                <Button key={job._id} onClick={() => setIsActive(prev => !prev)}
                 className="block lg:hidden text-lg font-light text-blue-700 hover:text-blue-700" 
                 variant="ghost">More Details</Button>  
                 }
