@@ -21,7 +21,7 @@ export default function FilterSheet(){
                             <path strokeLinecap="round" strokeLinejoin="round" d="M10.5 6h9.75M10.5 6a1.5 1.5 0 11-3 0m3 0a1.5 1.5 0 10-3 0M3.75 6H7.5m3 12h9.75m-9.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-3.75 0H7.5m9-6h3.75m-3.75 0a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m-9.75 0h9.75" />
                         </svg>
                     </SheetTrigger>
-                    <SheetContent side={"left"} className="flex items-start w-1/2">
+                    <SheetContent side={"left"} className="flex items-start w-full">
                         <div className="h-fit border rounded-lg pt-2 pb-14 px-4 w-full bg-slate-50 shadow my-8">
                             <div className="text-gray-600 flex justify-center items-center gap-3 h-14 text-xl border-b" >
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
