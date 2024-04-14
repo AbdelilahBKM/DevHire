@@ -1,20 +1,20 @@
 import JobListing from '@/components/ui/jobListing'
 import {Job, Technology, JobData, CompanyData} from './types'
 
-
+const api_url: string = "https://dev-hire-api.cyclic.app";
 
 const getJobs = async ():Promise<Job[]> => {
-  const endpoint: string = "http://localhost:9090/Job/getAll";
+  const endpoint: string = `${api_url}/Job/getAll`;
   const res  = await fetch(endpoint);
   const data = await res.json();
   const fetchedJobs: JobData[] = data.jobs;
   const jobs : Job[] = await Promise.all(fetchedJobs.map(async (job: JobData) : Promise<Job> => {
-      const response = await fetch(`http://localhost:9090/Company/get/${job.company}`);
+      const response = await fetch(`${api_url}/Company/get/${job.company}`);
       const data = await response.json();
       const company: CompanyData = data.company;
       const techIds = job.technologies;
       const technoglogies: Technology[] = await Promise.all(techIds.map(async (id) : Promise<Technology> =>{
-          const response = await fetch(`http://localhost:9090/Technology/get/${id}`);
+          const response = await fetch(`${api_url}/Technology/get/${id}`);
           const data = await response.json();
           return data.technology;
         }));
